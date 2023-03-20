@@ -19,8 +19,7 @@ const user=mongoose.Schema({
     },
     password:{
         type:String,
-        required:true,
-        
+        required:true
     }
 })
 user.pre("save",function(next){

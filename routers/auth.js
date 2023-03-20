@@ -20,12 +20,6 @@ router.get("/logout",(req,res)=>{
     res.clearCookie("jwt");
     res.send({"msg":"removed"})
 })
-// router.get("/jwt",(req,res)=>{
-//     const token=req.cookies.jwt;
-//     const verifyUser=jwt.verify(token,process.env.secret_key);
-//     res.send(verifyUser)
-//     console.log(verifyUser)
-// })
 router.post("/login",async(req,res)=>{
     try {
         const {email,password}=await req.body;
