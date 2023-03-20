@@ -22,7 +22,7 @@ const user=mongoose.Schema({
         required:true
     }
 })
-user.pre("save",function(next){
+user.pre("save",async function(next){
     const pass=await bcrypt.hash(this.password,10)
     this.password=pass;
     next();
