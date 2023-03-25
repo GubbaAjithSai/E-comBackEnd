@@ -30,6 +30,7 @@ router.post("/login",async(req,res)=>{
         if (userFound) {
             const flag=await bcrypt.compare(password,userFound.password);
             const token=await userFound.generateAuthtoken();
+            console.log(token)
             if (flag){
                 res.cookie("jwt",token);
                 res.json({"msg":"loggedIn successfully..."})
