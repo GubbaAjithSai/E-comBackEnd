@@ -30,9 +30,10 @@ router.post("/login",async(req,res)=>{
         if (userFound) {
             const flag=await bcrypt.compare(password,userFound.password);
             const token=await userFound.generateAuthtoken();
-            console.log(token)
             if (flag){
+                console.log("sending jwt")
                 res.cookie("jwt",token);
+                console.log(token)
                 res.json({"msg":"loggedIn successfully..."})
             }else{
                 res.status(400).send({"message":"invalid credentials"})
